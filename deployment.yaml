@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipe-chatbot-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recipe-chatbot
+  template:
+    metadata:
+      labels:
+        app: recipe-chatbot
+    spec:
+      containers:
+      - name: recipe-chatbot
+        image: recipe-chatbot:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
